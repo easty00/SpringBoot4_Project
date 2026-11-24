@@ -27,7 +27,11 @@ public class MyRunner implements ApplicationRunner {
         }
 
         //Iterable 의 default void forEach(consumer<? super T> action)
-        //함수형 인터페이스의 추상메서드 void accept(T t)
-        optionNames.forEach( String name -> System.out.println(name));
+        //함수형 인터페이스Consumer의 추상메서드 void accept(T t)
+        //Consumer 인터페이스의 accept() 메서드를 람다식으로 표현한 것
+        optionNames.forEach(optionName -> System.out.println(optionName));
+
+        //Consumer 인터페이스의 accept() 메서드를 Method Reference 로 표현
+        optionNames.forEach(System.out::println);
     }
 }
