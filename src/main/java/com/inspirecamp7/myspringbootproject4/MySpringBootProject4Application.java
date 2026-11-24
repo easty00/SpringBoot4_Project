@@ -1,6 +1,7 @@
 package com.inspirecamp7.myspringbootproject4;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -14,6 +15,7 @@ public class MySpringBootProject4Application {
 		// SpringApplication.run(MySpringBootProject4Application.class, args);
         // ctrl+alt+v
         SpringApplication application = new SpringApplication(MySpringBootProject4Application.class);
+        application.setWebApplicationType(WebApplicationType.SERVLET);
         application.run(args);
     }
 
