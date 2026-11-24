@@ -3,9 +3,11 @@ package com.inspirecamp7.myspringbootproject4.runner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
+@Component
 public class DBrunner implements ApplicationRunner {
 
     @Autowired

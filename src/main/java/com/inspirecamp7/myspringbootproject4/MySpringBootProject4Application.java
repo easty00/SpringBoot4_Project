@@ -11,8 +11,11 @@ import javax.sql.DataSource;
 public class MySpringBootProject4Application {
 
     public static void main(String[] args) {
-		SpringApplication.run(MySpringBootProject4Application.class, args);
-	}
+		// SpringApplication.run(MySpringBootProject4Application.class, args);
+        // ctrl+alt+v
+        SpringApplication application = new SpringApplication(MySpringBootProject4Application.class);
+        application.run(args);
+    }
 
     @Bean
     public String helloBean() {
