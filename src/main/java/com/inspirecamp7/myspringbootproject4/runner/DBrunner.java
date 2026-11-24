@@ -1,0 +1,20 @@
+package com.inspirecamp7.myspringbootproject4.runner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+
+import javax.sql.DataSource;
+
+public class DBrunner implements ApplicationRunner {
+
+    @Autowired
+    DataSource dataSource;      // 스프링이 만들어 둔 DB 연결 빈을 받아 오는 칸
+
+    @Override
+    public void run (ApplicationArguments args) throws Exception {
+        System.out.println("DataSource 구현 클래스 이름 = " + dataSource.getClass().getName());
+
+    }
+
+}
