@@ -1,5 +1,6 @@
 package com.inspirecamp7.myspringbootproject4.runner;
 
+import com.inspirecamp7.myspringbootproject4.properties.MyBootProperties;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,11 +24,17 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     Environment environment;
 
+    @Autowired
+    MyBootProperties properties;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("환경변수 myboot.name = " + myBootName);
         System.out.println("환경변수 myboot.age = " + mybootAge);
         System.out.println("환경변수 myboot.fullName = " + environment.getProperty("myboot.fullName"));
+
+        System.out.println("MyBootProperties getName = " + properties.getFullName());
+        System.out.println("MyBootProperties getAge = " + properties.getAge());
 
         System.out.println("server.port program argument 확인 " + args.containsOption("server.port"));
         System.out.println("myboot.name program argument 확인 " + args.containsOption("myboot.name"));
