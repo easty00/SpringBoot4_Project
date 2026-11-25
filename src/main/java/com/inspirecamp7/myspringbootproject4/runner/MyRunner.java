@@ -2,6 +2,7 @@ package com.inspirecamp7.myspringbootproject4.runner;
 
 import com.inspirecamp7.myspringbootproject4.config.CustomVO;
 import com.inspirecamp7.myspringbootproject4.properties.MyBootProperties;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.function.Consumer;
+import org.slf4j.Logger;
 
 @Component
 @Order(2)
@@ -31,19 +33,21 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     CustomVO customVO;
 
+    // Logger 객체생성
+    Logger logger = LoggerFactory.getLogger(MyRunner.class);
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("CustomerVO = " + customVO);
+        System.out.println("Logger 구현 클래스명 = " + logger.getClass().getName());
+        logger.debug("CustomerVO = {}" , customVO);
+        logger.debug("환경변수 myboot.name = {}" , myBootName);
+        logger.debug("환경변수 myboot.age = {}" , mybootAge);
+        logger.debug("환경변수 myboot.fullName = {}" , environment.getProperty("myboot.fullName"));
 
-        System.out.println("환경변수 myboot.name = " + myBootName);
-        System.out.println("환경변수 myboot.age = " + mybootAge);
-        System.out.println("환경변수 myboot.fullName = " + environment.getProperty("myboot.fullName"));
-
-        System.out.println("MyBootProperties getName = " + properties.getFullName());
-        System.out.println("MyBootProperties getAge = " + properties.getAge());
-
-        System.out.println("server.port program argument 확인 " + args.containsOption("server.port"));
-        System.out.println("myboot.name program argument 확인 " + args.containsOption("myboot.name"));
+        logger.info("MyBootProperties getName = {}" , properties.getFullName());
+        logger.info("MyBootProperties getAge = {}" , properties.getAge());
+        logger.info("server.port program argument 확인 {}" , args.containsOption("server.port"));
+        logger.info("myboot.name program argument 확인 {}" , args.containsOption("myboot.name"));
 
         //환경변수 목록을 확인하기
         Set<String> optionNames = args.getOptionNames();
