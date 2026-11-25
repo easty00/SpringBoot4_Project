@@ -29,12 +29,11 @@ public class MyRunner implements ApplicationRunner {
     MyBootProperties properties;
 
     @Autowired
-    CustomVO customVO
+    CustomVO customVO;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("CustomerV0 = " + customV0);
-
+        System.out.println("CustomerVO = " + customVO);
 
         System.out.println("환경변수 myboot.name = " + myBootName);
         System.out.println("환경변수 myboot.age = " + mybootAge);
