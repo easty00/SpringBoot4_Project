@@ -164,6 +164,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+        <finalName>myboot4</finalName>
 	</build>
 
 </project>
