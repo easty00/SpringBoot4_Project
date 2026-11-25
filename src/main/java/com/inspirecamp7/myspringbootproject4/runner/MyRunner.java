@@ -1,5 +1,6 @@
 package com.inspirecamp7.myspringbootproject4.runner;
 
+import com.inspirecamp7.myspringbootproject4.config.CustomVO;
 import com.inspirecamp7.myspringbootproject4.properties.MyBootProperties;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,14 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     MyBootProperties properties;
 
+    @Autowired
+    CustomVO customVO
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        System.out.println("CustomerV0 = " + customV0);
+
+
         System.out.println("환경변수 myboot.name = " + myBootName);
         System.out.println("환경변수 myboot.age = " + mybootAge);
         System.out.println("환경변수 myboot.fullName = " + environment.getProperty("myboot.fullName"));
