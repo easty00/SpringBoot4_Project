@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "customers")
 public class Customer {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
