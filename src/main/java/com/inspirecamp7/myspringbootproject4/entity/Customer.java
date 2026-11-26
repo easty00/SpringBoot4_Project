@@ -20,4 +20,6 @@ public class Customer {
     @Column(nullable = false, updatable = false)
     @CreationTimestamp      // 타임 뿐 아니라 스탬프까지 같이 넣어주어야 함.
     LocalDateTime createdAt = LocalDateTime.now();
+
+//    private String customerAddress;
 }
