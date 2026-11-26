@@ -29,6 +29,7 @@ public class DBrunner implements ApplicationRunner {
             log.info("DB Product Name = {}", metaData.getDatabaseProductName());
             log.info("DB URL = {}", metaData.getURL());
             log.info("DB Username = {}", metaData.getUserName());
+            log.info("DB Driver = {}", metaData.getDriverName());
         }
 
     }
