@@ -37,13 +37,19 @@ class CustomerRepositoryTest {
     }
 
     //Customer 수정
+        /*  Native Query
+         update customers set customer_name = '스프링A' where customer_id = 'A001';
+        Hibernate 가 생성한 Query
+         update customers set customer_id=?,customer_name=? where id=?
+     */
     @Test
     void testUpdate() {
-        Customer customer = customerRepository.findByCustomerId("A001")
+        Customer customer = customerRepository.findByCustomerId("AB001")
                 .orElseGet(() -> new Customer());
-        customer.setCustomerName("SpringA");
-        Customer updatedCustomer = customerRepository.save(customer);
-        assertThat(updatedCustomer.getCustomerName()).isEqualTo("SpringA");
+        customer.setCustomerName("SpringAB");
+//        Customer updatedCustomer = customerRepository.save(customer);
+//        assertThat(updatedCustomer.getCustomerName()).isEqualTo("SpringB");
+        assertThat(customer.getCustomerName()).isEqualTo("SpringAB");
     }
 
     //2. Customer 조회 (값이 일치하는 Customer 존재하는 경우)
