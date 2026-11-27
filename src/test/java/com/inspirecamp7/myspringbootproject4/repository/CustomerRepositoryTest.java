@@ -19,14 +19,14 @@ class CustomerRepositoryTest {
         //Given-When-Then
         //Given (준비단계)
         Customer customer = new Customer();
-        customer.setCustomerId("A001");
+        customer.setCustomerId("B001");
         customer.setCustomerName("스프링");
         //When  (실행단계)
         Customer addedCustomer = customerRepository.save(customer);
         //Then  (검증단계)
         assertThat(addedCustomer).isNotNull();
-        assertThat(addedCustomer.getId()).isEqualTo(1L);
-        assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링");
+        assertThat(addedCustomer.getId()).isEqualTo("B001");
+        assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
     }
 
 }
