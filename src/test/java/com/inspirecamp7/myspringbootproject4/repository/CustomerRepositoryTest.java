@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,14 +21,24 @@ class CustomerRepositoryTest {
         //Given-When-Then
         //Given (준비단계)
         Customer customer = new Customer();
-        customer.setCustomerId("B001");
-        customer.setCustomerName("스프링");
+        customer.setCustomerId("B004");
+        customer.setCustomerName("스프링B");
         //When  (실행단계)
         Customer addedCustomer = customerRepository.save(customer);
         //Then  (검증단계)
         assertThat(addedCustomer).isNotNull();
-        assertThat(addedCustomer.getId()).isEqualTo("B001");
+        assertThat(addedCustomer.getCustomerId()).isEqualTo("B004");
         assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
+    }
+
+    //2. Customer 조회
+    @Test
+    void testRead() {
+        Optional<Customer> optionalCustomer = customerRepository.findByCustomerId("B004");
+        //Optional이 담고 있는 Customer가 값을 가지고 있으면?
+        if(optionalCustomer.isPresent()){
+            Customer existCustomer = optionalCustomer.get();
+        }
     }
 
 }
