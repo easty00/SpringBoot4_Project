@@ -43,13 +43,15 @@ class CustomerRepositoryTest {
          update customers set customer_id=?,customer_name=? where id=?
      */
     @Test
+    @Transactional
+    @Rollback(value = false)
     void testUpdate() {
         Customer customer = customerRepository.findByCustomerId("AB001")
                 .orElseGet(() -> new Customer());
-        customer.setCustomerName("SpringAB");
+        customer.setCustomerName("SpringABC");
 //        Customer updatedCustomer = customerRepository.save(customer);
 //        assertThat(updatedCustomer.getCustomerName()).isEqualTo("SpringB");
-        assertThat(customer.getCustomerName()).isEqualTo("SpringAB");
+        assertThat(customer.getCustomerName()).isEqualTo("SpringABC");
     }
 
     //2. Customer 조회 (값이 일치하는 Customer 존재하는 경우)
