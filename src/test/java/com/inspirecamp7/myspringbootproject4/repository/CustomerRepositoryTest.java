@@ -38,7 +38,11 @@ class CustomerRepositoryTest {
         //Optional이 담고 있는 Customer가 값을 가지고 있으면?
         if(optionalCustomer.isPresent()){
             Customer existCustomer = optionalCustomer.get();
+            assertThat(existCustomer.getCustomerId()).isEqualTo("B004");
         }
+        // 함수형 인터페이스 Customer 의 추상메서드 void accept(T t)
+        // 컨수머에 담겨진 T가 바로 넘어옴
+        optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
     }
 
 }
