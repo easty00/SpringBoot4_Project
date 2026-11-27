@@ -4,6 +4,7 @@ import com.inspirecamp7.myspringbootproject4.entity.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,18 +18,19 @@ class CustomerRepositoryTest {
     CustomerRepository customerRepository;
 
     @Test
+    @Transactional
     void testInsert() {
         //Given-When-Then
         //Given (준비단계)
         Customer customer = new Customer();
-        customer.setCustomerId("B004");
-        customer.setCustomerName("스프링B");
+        customer.setCustomerId("AB001");
+        customer.setCustomerName("스프링AB");
         //When  (실행단계)
         Customer addedCustomer = customerRepository.save(customer);
         //Then  (검증단계)
         assertThat(addedCustomer).isNotNull();
-        assertThat(addedCustomer.getCustomerId()).isEqualTo("B004");
-        assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
+        assertThat(addedCustomer.getCustomerId()).isEqualTo("AB001");
+        assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링AB");
     }
 
     //2. Customer 조회 (값이 일치하는 Customer 존재하는 경우)
