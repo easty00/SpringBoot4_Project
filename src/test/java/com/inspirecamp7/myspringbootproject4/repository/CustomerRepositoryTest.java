@@ -31,7 +31,7 @@ class CustomerRepositoryTest {
         assertThat(addedCustomer.getCustomerName()).isEqualTo("스프링B");
     }
 
-    //2. Customer 조회
+    //2. Customer 조회 (값이 일치하는 Customer 존재하는 경우)
     @Test
     void testRead() {
         Optional<Customer> optionalCustomer = customerRepository.findByCustomerId("B004");
@@ -45,4 +45,17 @@ class CustomerRepositoryTest {
         optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
     }
 
+    // 3. Customer 조회 (값이 일치하는 Customer 존재하지 않는 경우)
+    @Test
+    void testReadNotFound() {
+        //Optional orElseGet(Supplier supplier)
+        //함수형 인터페이스 Supplier 추상메서드 T get()
+        Customer customer = customerRepository.findByCustomerId("B004") //Optional<Customer>
+                .orElseGet(() -> new Customer());
+        // Customer가 값을 가지는 경우 성공. 데이터가 없으면 실패함
+        //assertThat(customer).isNotNull();
+        
+        // Customer가 값이 없는 경우 성공
+        assertThat(customer.getCustomerId()).isNull();
+    }
 }
